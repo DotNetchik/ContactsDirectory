@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ContactsDirectory.Infastructure.Repositories
@@ -35,7 +34,7 @@ namespace ContactsDirectory.Infastructure.Repositories
             => _contactContext.Contacts.FirstOrDefaultAsync(x => x.Id == id);
 
         public Task<List<Contact>> GetAll()
-        => _contactContext.Contacts.ToListAsync();
+        => _contactContext.Contacts.OrderBy(x=>x.Surname).ToListAsync();
 
         public IQueryable<Contact> Search()
          => _contactContext.Contacts;

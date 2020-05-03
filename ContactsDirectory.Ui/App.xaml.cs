@@ -23,7 +23,7 @@ namespace ContactsDirectory.Ui
             var builder = new ContainerBuilder();
             builder.Register((c) => new ContactContext(connectionString));
             builder.RegisterType<ContactRepository>().As<IContactRepository>();
-            builder.RegisterType<MainViewModel>();
+            builder.RegisterType<MainWindowViewModel>();
 
             var csl = new AutofacServiceLocator(builder.Build());
             ServiceLocator.SetLocatorProvider(() => csl);

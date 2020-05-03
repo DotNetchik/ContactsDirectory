@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace ContactsDirectory.Ui.ViewModels
 {
@@ -9,9 +8,9 @@ namespace ContactsDirectory.Ui.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChange(string propertyName)
+        protected void OnPropertyChange([CallerMemberName] String propertyName = "")
         {
-            this?.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

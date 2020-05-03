@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ContactsDirectory.Views.Ui
+namespace ContactsDirectory.Ui.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,7 +25,14 @@ namespace ContactsDirectory.Views.Ui
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = ServiceLocator.Current.GetInstance<MainViewModel>();
+            DataContext = ServiceLocator.Current.GetInstance<MainWindowViewModel>();
+        }
+
+        private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            this.DragMove();
         }
     }
 }
