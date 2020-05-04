@@ -15,7 +15,7 @@ namespace ContactsDirectory.Ui.ViewModels
         protected override async Task SaveMethod()
         {
             await ContactRepository.Update(Contact);
-            CloseDialogView("changed");
+            CloseDialogView();
         }
     }
 }

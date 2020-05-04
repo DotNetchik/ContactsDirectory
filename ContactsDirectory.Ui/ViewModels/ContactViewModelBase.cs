@@ -60,7 +60,7 @@ namespace ContactsDirectory.Ui.ViewModels
         => _closeCommand ??= new SimpleCommand
         {
             CanExecuteDelegate = _ => true,
-            ExecuteDelegate = _ => { CloseDialogView(""); }
+            ExecuteDelegate = _ => { CloseDialogView(); }
         };
         public ICommand DeleteCommand
             => _deleteCommand ??= new SimpleCommand
@@ -69,7 +69,7 @@ namespace ContactsDirectory.Ui.ViewModels
                 ExecuteDelegate = async _ =>
                 {
                     await ContactRepository.Delete(Contact);
-                    CloseDialogView("delete");
+                    CloseDialogView();
                 }
             };
 

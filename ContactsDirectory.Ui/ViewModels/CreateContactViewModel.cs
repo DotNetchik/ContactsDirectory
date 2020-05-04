@@ -12,13 +12,13 @@ namespace ContactsDirectory.Ui.ViewModels
             Title = "Create new contact";
             FlipCommand=new SimpleCommand{ExecuteDelegate = _=>
             {
-                CloseDialogView("cancel");
+                CloseDialogView();
             }};
         }
         protected override async Task SaveMethod()
         {
             await ContactRepository.Add(Contact);
-            CloseDialogView("created");
+            CloseDialogView();
         }
     }
 }

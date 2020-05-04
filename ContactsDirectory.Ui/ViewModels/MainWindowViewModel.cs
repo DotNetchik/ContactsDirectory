@@ -77,8 +77,7 @@ namespace ContactsDirectory.Ui.ViewModels
         }
         private async void ShowEditContactControl(Contact contact)
         {
-            if(contact==null)
-                return;
+            if (contact == null) throw new ArgumentNullException(nameof(contact));
 
             var vm = new EditContactViewModel(contact);
             var view = new ContactDetailsControl {DataContext = vm};
@@ -124,11 +123,9 @@ namespace ContactsDirectory.Ui.ViewModels
         public ICommand ShowEditContactViewCommand
             => _showEditContatViewCommand ??= new SimpleCommand
             {
-                CanExecuteDelegate = _ => true,
+                CanExecuteDelegate = _ => SelectedContact != null,
                 ExecuteDelegate = _ =>
                 {
-                    if (SelectedContact == null)
-                        return;
                     ShowEditContactControl(SelectedContact);
                 }
             };

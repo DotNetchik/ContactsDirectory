@@ -15,10 +15,10 @@ namespace ContactsDirectory.Ui.ViewModels
             return DialogHost.Show(ModelsStack.Peek(), DialogHostId, new DialogOpenedEventHandler(
                 (sender, args) => { Session = args.Session; }));
         }
-        protected void CloseDialogView(object result)
+        protected void CloseDialogView()
         {
             ModelsStack.Clear();
-            Session.Close(result);
+            Session.Close(null);
         }
     }
 }
